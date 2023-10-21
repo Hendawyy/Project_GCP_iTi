@@ -14,4 +14,6 @@ resource "google_compute_instance" "private_vm" {
     network    = var.network_name
     subnetwork = var.google_compute_subnet2
   }
+
+  tags = ["iap-allow-ssh"]
 }
