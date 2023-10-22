@@ -34,7 +34,9 @@ variable "sa_1_email" {
 variable "K8S_email" {
 }
 
+variable "sa_1_key" {
 
+}
 variable "region2" {
   type    = string
   default = "us-east1"
@@ -43,4 +45,12 @@ variable "region2" {
 variable "zone2" {
   type    = string
   default = "us-east1-b"
+}
+
+variable "startup_script" {
+  default = "~/Documents/Projects/GCP_Project/Project_GCP_iTi/Startupscript.sh"
+}
+
+variable "vm_subnet2_cidr" {
+  
 }

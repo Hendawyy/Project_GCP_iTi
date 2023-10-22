@@ -30,13 +30,15 @@ resource "google_container_cluster" "gcp_k8s" {
   workload_identity_config {
     workload_pool = "${var.project_id}.svc.id.goog"
   }
-
   master_authorized_networks_config {
+    cidr_blocks {
+      cidr_block = var.vm_subnet2_cidr
+    }
   }
 
   private_cluster_config {
     enable_private_nodes    = true
-    enable_private_endpoint = true
+    enable_private_endpoint = false
     master_ipv4_cidr_block  = "172.168.0.0/28"
   }
 }

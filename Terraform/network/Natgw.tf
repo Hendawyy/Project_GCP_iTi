@@ -5,7 +5,7 @@ resource "google_compute_router" "nat-router" {
 }
 
 resource "google_compute_router_nat" "nat-config" {
-  name                               = "nat-config"
+  name                               = "nat-gateway"
   router                             = google_compute_router.nat-router.name
   region                             = var.region2
   nat_ip_allocate_option             = "AUTO_ONLY"

@@ -32,6 +32,7 @@ variable "rolezzz" {
   default = [
     "roles/source.reader",
     "roles/artifactregistry.writer",
-    "roles/container.clusterAdmin",
+    "roles/artifactregistry.reader",
+    "roles/container.clusterAdmin"
   ]
 }

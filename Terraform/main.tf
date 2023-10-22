@@ -19,7 +19,8 @@ module "compute" {
   google_compute_subnet2 = module.network.google_compute_subnet2
   sa_1_email             = module.IAM.sa_1_email
   K8S_email              = module.IAM.K8S_email
-
+  sa_1_key               = module.IAM.sa_1_key
+  vm_subnet2_cidr        = module.network.vm_subnet2_cidr
 }
 
 module "IAM" {

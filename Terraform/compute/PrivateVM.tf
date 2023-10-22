@@ -15,5 +15,11 @@ resource "google_compute_instance" "private_vm" {
     subnetwork = var.google_compute_subnet2
   }
 
+  metadata = {
+    "sa-1-key" = var.sa_1_key.private_key
+  }
+
+  metadata_startup_script = file(var.startup_script)
+
   tags = ["iap-allow-ssh"]
 }

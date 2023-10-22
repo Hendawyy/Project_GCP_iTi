@@ -11,3 +11,6 @@ output "google_compute_subnet2" {
   value = google_compute_subnetwork.subnet2.name
 }
 
+output "vm_subnet2_cidr" {
+  value = google_compute_subnetwork.subnet2.ip_cidr_range
+}
