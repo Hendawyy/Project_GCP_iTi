@@ -60,16 +60,16 @@ To set up the infrastructure, clone this repository to your local environment:
 To utilize GCP within Terraform, follow these steps:
 1. Create a service account. You can do this through the GCP console or using gcloud commands:
    GCP console:
-    1.1. Navigate to IAM.
-    1.2. Find Service Accounts.
-    1.3. Create a service account.
-    1.4. Grant the editor role to this account.
-    1.5. Inside this service account, find keys.
-    1.6. Add a key and choose the JSON format.
-    1.7. After adding the key, it will be downloaded automatically.
-    1.8. Copy this key to your project directory.
-    1.9. Create a directory called "secrets."
-    1.10. Copy your key to this directory.
+    - 1.1. Navigate to IAM.
+    - 1.2. Find Service Accounts.
+    - 1.3. Create a service account.
+    - 1.4. Grant the editor role to this account.
+    - 1.5. Inside this service account, find keys.
+    - 1.6. Add a key and choose the JSON format.
+    - 1.7. After adding the key, it will be downloaded automatically.
+    - 1.8. Copy this key to your project directory.
+    - 1.9. Create a directory called "secrets."
+    - 1.10. Copy your key to this directory.
    gcloud Commands
     1. Create the service account and grant the editor role:
        ```
