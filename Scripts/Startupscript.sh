@@ -33,7 +33,7 @@ sudo systemctl restart docker
 
 
 # Clone the Node.js web app repo
-git clone https://github.com/Mostafa-Yehia/simple-node-app
+git clone https://github.com/Hendawyy/simple-node-app
 
 cd simple-node-app
 
@@ -49,7 +49,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
-RUN npm i
+RUN npm install
 
 # Copy app code into the container
 COPY . .
@@ -60,6 +60,8 @@ COPY --from=build /app /app
 
 WORKDIR /app
 
+# Expose the port The app runs on
+EXPOSE 5000
 
 # Start the Node.js app
 CMD ["index.js"]
@@ -106,10 +108,10 @@ gcloud container clusters update gcp-k8s --zone europe-west1-b --enable-master-g
 docker pull bitnami/mongodb:4.4.4
 
 # Step 10: Tag Docker Image (MONGO)
-docker tag bitnami/mongodb:4.4.4 us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/bitnami/mongodb:4.4.4
+docker tag bitnami/mongodb:4.4.4 us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/mongodb:v1
 
 # Step 11: Push Docker Image to Artifact Registry (MONGO)
-docker push us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/bitnami/mongodb:4.4.4
+docker push us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/mongodb:v1
 
 # Step 12: Tag Docker Image (Node.js)
 docker tag node-app:v1 us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/node-app:v1

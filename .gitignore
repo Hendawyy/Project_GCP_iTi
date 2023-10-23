@@ -24,4 +24,7 @@ Terraform/terraform.rc
 
 # Ignore the "secrets" directory
 secrets/
-Kubernetes/App/
+
+# Ignore the K8S "secrets" files
+Kubernetes/Mongo/2-MongoSecrets.yaml
+Kubernetes/App/2-NodeSecrets.yaml

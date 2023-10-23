@@ -48,9 +48,9 @@ variable "zone2" {
 }
 
 variable "startup_script" {
-  default = "~/Documents/Projects/GCP_Project/Project_GCP_iTi/Startupscript.sh"
+  default = "~/Documents/Projects/GCP_Project/Project_GCP_iTi/Scripts/Startupscript.sh"
 }
 
 variable "vm_subnet2_cidr" {
-  
+
 }

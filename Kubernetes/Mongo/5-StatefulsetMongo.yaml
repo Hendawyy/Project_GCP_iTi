@@ -30,14 +30,14 @@ spec:
                   app.kubernetes.io/name: mongodb
               namespaces:
               - mongo
-              topologyKey: kubernetes.io/hostname
+              topologyKey: zone
             weight: 1
       securityContext:
         fsGroup: 1001
         sysctls: []
       containers:
       - name: mongodb
-        image: us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/bitnami/mongodb:4.4.4
+        image: us-east1-docker.pkg.dev/hendawy-iti-gcp/my-images/mongodb:v1
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsNonRoot: true
@@ -62,7 +62,7 @@ spec:
         - name: MONGODB_ADVERTISED_HOSTNAME
           value: "$(MY_POD_NAME).$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE).svc.cluster.local"
         - name: MONGODB_USERNAME
-          value: "drage"
+          value: "Hendawy"
         - name: MONGODB_DATABASE
           value: "inventory"
         - name: MONGODB_REPLICA_SET_NAME
