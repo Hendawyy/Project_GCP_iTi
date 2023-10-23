@@ -1,6 +1,6 @@
 # Infrastructure as Code (IAC) in Google Cloud Platform (GCP) ☁️
 
-This project showcases the power of Infrastructure as Code (IAC) through Terraform, enabling the creation of GCP ☁️ Infrastructure:
+This project showcases the power of Infrastructure as Code (IAC) through Terraform, enabling the creation of GCP ☁️ Infrastructure
 
 ## Project Components  🛠️
 
