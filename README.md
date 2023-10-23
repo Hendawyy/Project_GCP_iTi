@@ -21,7 +21,23 @@ This project showcases the power of Infrastructure as Code (IAC) through Terrafo
 Before you begin, ensure you have the following installed:
 
 - Terraform 🏗️
-- gcloud ☁️
+- Google Cloud SDK ☁️
 - Docker  🐋
-- Kubectl
+- Kubectl ☸
+
+## Clone this repository to your local environment to start setting up the infrastructure.
+
+1. Open a terminal window.
+2. Run the following command:
+```
+git clone https://github.com/Hendawyy/Project_GCP_iTi.git
+cd Project_GCP_iTi.git
+```
+---- 🌟 ----
+
+
+
+## Questions or Need Help?
+
+If you have any questions, suggestions, or need assistance, please don't hesitate to Contact Me [Seif Hendawy](mailto:seifhendawy1@gmail.com). 😉
 
