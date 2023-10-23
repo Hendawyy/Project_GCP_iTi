@@ -25,15 +25,76 @@ Before you begin, ensure you have the following installed:
 - Docker  🐋
 - Kubectl ☸
 
-## Clone this repository to your local environment to start setting up the infrastructure.
+### Install The Google Cloud SDK ☁️.
 
 1. Open a terminal window.
 2. Run the following command:
-```
-git clone https://github.com/Hendawyy/Project_GCP_iTi.git
-cd Project_GCP_iTi.git
-```
+   
+  ```
+  sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+  ```
+3. Then you will need to configure your account and select your project, for this you will use the following command:
+
+  ```
+  gcloud auth login
+  ```
+4. you will be prompted to enter the project id.
+> [!NOTE]
+> you can get the project id by going to the GCP console and in the dashboard you will find the project id
+> The chosen project will be the default project for all the gcloud commands till changed
+
 ---- 🌟 ----
+
+### Clone this repository to your local environment to start setting up the infrastructure.
+
+Run the following command:
+  ```
+  git clone https://github.com/Hendawyy/Project_GCP_iTi.git
+  cd Project_GCP_iTi
+  ```
+
+---- 🌟 ----
+
+### Now We Can Get to The Terraform
+
+To be able to use the GCP from the terraform you will have to
+1. Create a service account for this we can do it using the GCP console or the gcloud commands
+   GCP console:
+    1. Navigate to the IAM
+    2. Then find Service Accounts
+    3. Create A service account
+    4. Give this account the editor role
+    5. inside this service account find keys
+    6. Add Key
+    7. Choose JSON format
+    8. After adding the key it will be downloaded automatically
+    9. Copy this key to your project directory
+    10. Create a directory called "Secrets"
+    11. Copy your key to this directory
+   gcloud Commands
+    1. First we create the Svc Account & Add The role
+       ```
+       gcloud iam service-accounts create SERVICE_ACCOUNT_NAME --display-name "DISPLAY_NAME"
+       gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member=serviceAccount:SERVICE_ACCOUNT_EMAIL --role=roles/editor
+       ```
+    2. Then We Create the Key
+        ```
+        gcloud iam service-accounts keys create KEY_FILE.json --iam-account SERVICE_ACCOUNT_EMAIL
+        ```
+    3. Copy this key to your project directory
+    4. Create a directory called "Secrets"
+    5. Copy your key to this directory
+
+2. Then we add this key path inside our terraform variables and we can use it freely inside our terraform configurations
+3. Now You Can run the Terraform configuration files
+   ```
+    cd Terraform\
+    terraform init
+    terraform plan
+    terrafrom apply
+    ```
+
+
 
 
 
