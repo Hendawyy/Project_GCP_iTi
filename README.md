@@ -1,1 +1,1 @@
-# Infrastracture As A Code(IAC) in GCP☁️
+# Infrastracture As A Code (IAC) in GCP☁️
