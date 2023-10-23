@@ -94,7 +94,14 @@ To be able to use the GCP from the terraform you will have to
     terrafrom apply
     ```
 
+> [!NOTE]
+> The ``` terraform apply ``` command might take up to 15 mins to finish executing
 
+![Infrastructure](./Screenshots/Task 1 Infrastructure.png)
+
+---- 🌟 ----
+
+### Now We Can Get to The Terraform
 
 
 
