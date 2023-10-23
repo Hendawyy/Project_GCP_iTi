@@ -87,6 +87,8 @@ To be able to use the GCP from the terraform you will have to
 
 2. Then we add this key path inside our terraform variables and we can use it freely inside our terraform configurations
 3. Now You Can run the Terraform configuration files
+4. The terraform runs a shell script inside the Private VM instance 
+
    ```
     cd Terraform\
     terraform init
@@ -96,14 +98,78 @@ To be able to use the GCP from the terraform you will have to
 
 > [!NOTE]
 > The ``` terraform apply ``` command might take up to 15 mins to finish executing
-
-![Infrastructure](./Screenshots/Task%1%Infrastructure.png)
-![Infrastructure](./Screenshots/Task 1 Infrastructure.png)
-
+> You can check the output in the Screenshots directory
 
 ---- 🌟 ----
 
-### Now We Can Get to The Terraform
+### Startup Script
+
+1. The Startup script can be found in ```Scripts/Startupscript.sh``` and
+2. The script automates the deployment process of a Node.js web application to Google Cloud Platform (GCP) using Docker and Kubernetes.
+3. The script simplifies various tasks, including setting up the development environment, building Docker images, and deploying them to GCP's Artifact Registry.
+4. The script Installs Dependencies: The script installs essential libraries, Git, Google Cloud SDK for GKE, Kubectl, and Docker.
+5. The script Clones a Node.js web app
+6. The script creates a Dockerfile for the Node.js app, builds a Docker image, and exposes it on port 5000.
+7. The script installs & Confgures Tinyproxy which allows us to acces the Private VM instance from the local machine.
+8. GCP Authentication: The script fetches a service account key, decrypts it, activates the service account, and configures Docker for GCP.
+9. Cluster Connection: It connects to the GCP Kubernetes cluster.
+10. The script pulls a MongoDB image, tags it, and pushes it to GCP Artifact Registry. It does the same for the Node.js app.
+
+---- 🌟 ----
+
+### Post Terraform Apply
+
+1. After Applying the terraform the user will want to acces the Private VM instance through Identity-Aware Proxy (IAP), you can do thet using the following command:
+   ```
+   gcloud compute ssh private-vm-instance --project=hendawy-iti-gcp --zone=us-east1-b --tunnel-through-iap
+   ```
+2. After accessing the machine you can check the Startup script Progress by seeing the log file, you can do that by executing the following command:
+   ```
+   cat /var/log/syslog
+   ```
+3. If all is good and the script finished running you can exit the machine by running the ```exit``` command
+   
+> [!NOTE]
+> You can also check if the script ran successfully or not by going to the artifact registrey on the GCP console
+> you should find a repository called my-images inside it you will find 2 docker images node-app & mongoDB
+> you can see what it will look like in the Screenshots inside the ```Screenshtos``` directory
+
+---- 🌟 ----
+
+### 🌐  Remotely access the GKE Cluster from the local machine
+1. Using the Tinyproxy we can deploy a proxy daemon in the host to forward traffic to the cluster control plane.
+2. We must set up the remote client with cluster credentials and specify the proxy.
+3. To do that we need to get the Credentials of the cluster through the following command
+   ```
+   gcloud container clusters get-credentials gcp-k8s --zone europe-west1-b --project hendawy-iti-gcp --internal-ip
+   ```
+4. Connect to the cluster from the remote local private instance using IAP and Deploy The Web Application
+   ```
+   gcloud compute ssh private-vm-instance \
+    --tunnel-through-iap \
+    --project=hendawy-iti-gcp \
+    --zone=us-east1-b \
+    --ssh-flag="-4 -L8888:localhost:8888 -N -q -f" 2>/dev/null
+   ```
+5. Specify the proxy
+   ```
+   export HTTPS_PROXY=localhost:8888
+   ```
+6. Then Show GKE Nodes
+   ```
+   kubectl get nodes
+   ```
+> [!NOTE]
+> There is a shell script called ```local_script.sh``` inside the ```Scripts``` directory that does all the steps in thus part
+> and it also applies The Kubernetes files for the MongoDB (Backend Configuration)
+> and the files for the Nodejs App (Frontend Configuration) as well you can run this script by executing the following commands
+> ```
+> cd Project_GCP_iTi/Scripts/
+> source local_script.sh 
+> ```
+
+
+
 
 
 
