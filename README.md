@@ -12,18 +12,6 @@ This project showcases the power of Infrastructure as Code (IAC) through Terrafo
 
 - Exposure via Ingress and Load Balancer: Expose the web application using an ingress controller and load balancer, ensuring accessibility and distribution of traffic.
 
-## Key Considerations:
-
-- Restricted Internet Access: Only the management VM (private) will have access to the internet through NAT, enhancing security and control.
-
-- Isolated GKE Cluster: The GKE cluster (private) will not have external internet access, emphasizing network security.
-
-- Artifact Management: The management VM is designated for cluster management and image building/pushing to the Artifact Registry, ensuring centralized artifact storage.
-
-- Security Best Practices: Employ predefined roles and avoid the use of default service accounts, promoting best security practices.
-
-- Minimal Open Ports: Reduce open ports and permissions to enhance security and minimize potential vulnerabilities.
-
 ![Requirements](./Req/Requirements.png)
 
 ## 🚀 Getting Started
